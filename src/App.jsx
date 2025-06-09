@@ -2,8 +2,11 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+// import Dashboard from "./pages/dashboard/Dashboard";
 import Dashboard from "./pages/dashboard/Dashboard";
 import BookDetails from "./pages/dashboard/BookDetails";
+import RootLayout from "./layouts/rootLayout";
+import AddBooks from "./pages/dashboard/AddBooks";
 
 const echoBooksRoutes = createBrowserRouter ([
   {
@@ -18,13 +21,24 @@ const echoBooksRoutes = createBrowserRouter ([
     path: "/sign-up",
     element: <SignUp/>
   },
-  {
-    path: "/dashboard",
-    element: <Dashboard/>
-  },
+
   {
     path: "/book-details",
     element: <BookDetails/>
+  },
+  {
+    path: "/dashboard",
+    element: <RootLayout/>,
+    children: [
+      {
+        index: true,
+        element: <Dashboard/>
+      },
+      {
+        path: 'add-books',
+        element:<AddBooks/>
+      }
+    ]
   }
   
 ])
