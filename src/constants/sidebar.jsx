@@ -3,12 +3,12 @@ export default  [
         {
             icon: <LayoutDashboard/>,
             title: "Dashboard",
-            path: "/",
+            path: "/dashboard",
         },
         {
             icon: <LibraryBig/>,
             title: "Add Books",
-            path: "/add-books"
+            path: "add-books"
         },
         {
             icon: <Shapes/>,

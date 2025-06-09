@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/dashboard/Dashboard";
 import BookDetails from "./pages/dashboard/BookDetails";
 import RootLayout from "./layouts/rootLayout";
+import AddBooks from "./pages/dashboard/AddBooks";
 
 const echoBooksRoutes = createBrowserRouter ([
   {
@@ -32,6 +33,10 @@ const echoBooksRoutes = createBrowserRouter ([
       {
         index: true,
         element: <Dashboard/>
+      },
+      {
+        path: 'add-books',
+        element:<AddBooks/>
       }
     ]
   }
