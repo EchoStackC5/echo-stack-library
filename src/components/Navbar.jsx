@@ -1,7 +1,26 @@
+import bookLogo from '../assets/images/bookLogo.svg'
+
 export default function Navbar(){
     return(
-        <section>
-            <p>This is Navbar</p>
-        </section>
+            <nav className=' flex py-6 justify-center'>
+                <div className='flex justify-around h-15 w-[70%] p-5 bg-white rounded-4xl items-center shadow-xl'>
+                     <div className='flex'>
+                    <img src={bookLogo} alt="Logo" />
+                    <h1 className='font-md text-xl'>EchoBooks</h1>
+                </div>
+                <div className='text-xs space-x-5'>
+                    <span>Home</span>
+                    <span>About Us</span>
+                    <span>Features</span>
+                    <span>Contact</span>
+                </div>
+                    
+                <div className=" flex space-x-5 text-xs">
+                    <button className="h-7 w-20 bg-primary rounded-2xl text-white">Sign Up</button>
+                    <button className="h-7 w-20 border-1px rounded-2xl text-primary">Login</button>
+                </div>
+                </div>
+               
+            </nav>
     )
 }
