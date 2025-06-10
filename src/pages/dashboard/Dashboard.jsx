@@ -36,7 +36,7 @@ export default function Dashboard() {
             <div>
                 <ChartAreaLinear />
             </div>
-            <Card >
+            <Card className="shadow-none border border-light-border">
                 <div className="flex items-center justify-between p-8 w-full ">
                     <h1 className="text-2xl text-darkestHeading font-satoshi">Available Books</h1>
                     <Link
