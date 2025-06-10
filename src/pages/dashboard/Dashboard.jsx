@@ -9,6 +9,8 @@ import AvailableBooks from "@/pages/dashboard/AvailableBooks";
 import AvailableBooksConstants from "@/constants/BooksAvailable";
 import { ChevronRight } from "lucide-react";
 import { Link, NavLink } from "react-router";
+import BooksGenre from "./Genre";
+import GenreFilter from "@/components/GenreFiter";
 // import { chartConfig } from "./DashboardCharts";
 
 export default function Dashboard() {
@@ -49,6 +51,19 @@ export default function Dashboard() {
                 <div className="grid grid-cols-1 md:grid-cols-3  gap-4 p-8">
                     {AvailableBooksConstants.map((book, index) => (
                         <AvailableBooks key={index} booksData={book} />
+                    ))}
+                </div>
+
+            </Card>
+             <Card className="shadow-none border border-light-border">
+                <div className="flex items-center justify-between p-8 w-full ">
+                    <h1 className="text-2xl text-darkestHeading font-satoshi">Books Genre</h1>
+                    <GenreFilter  />
+                    
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3  gap-4 p-8">
+                    {AvailableBooksConstants.map((book, index) => (
+                        <BooksGenre key={index} booksData={book} />
                     ))}
                 </div>
 

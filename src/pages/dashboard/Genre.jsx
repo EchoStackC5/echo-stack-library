@@ -11,7 +11,9 @@ import {
 } from "@/components/ui/card"
 import { Link, NavLink } from "react-router"
 
-export default function AvailableBooks({booksData}) {
+export default function BooksGenre({booksData}) {
+
+    
     
     const getGradientClasses = (bgColor) => {
         const gradientMap = {
@@ -39,7 +41,16 @@ export default function AvailableBooks({booksData}) {
             </div>
             <div className="flex flex-col bg-backgrounds rounded-b-md w-[200px] py-4 px-4 border border-gray-200">
                 <p className="font-aceme text-gray-800 text-lg font-medium line-clamp-2">{booksData.title}</p>
-                <p className="text-gray-600 text-sm mt-1">{booksData.author}</p>
+                <div className="flex flex-wrap gap-2 mt-2">
+        {booksData.genre.map((singleGenre, index) => (
+            <p 
+                key={index}
+                className="text-gray-600 text-xs bg-white text-center px-3 py-1 rounded-full border border-dark-border cursor-pointer whitespace-nowrap"
+            >
+                {singleGenre}
+            </p>
+        ))}
+    </div>
             </div>
             
         </section>
