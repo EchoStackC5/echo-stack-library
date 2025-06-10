@@ -6,7 +6,7 @@ export default function Navbar(){
                 <div className='flex justify-around h-15 w-[70%] p-5 bg-white rounded-4xl items-center shadow-xl'>
                      <div className='flex'>
                     <img src={bookLogo} alt="Logo" />
-                    <h1 className='font-md text-xl'>EchoBooks</h1>
+                    <h1 className='font-md text-xs md:text-xl'>EchoBooks</h1>
                 </div>
                 <div className='text-xs space-x-5'>
                     <span>Home</span>
@@ -15,9 +15,9 @@ export default function Navbar(){
                     <span>Contact</span>
                 </div>
                     
-                <div className=" flex space-x-5 text-xs">
+                <div className=" flex space-x-5 md:text-xs text-xs">
                     <button className="h-7 w-20 bg-primary rounded-2xl text-white">Sign Up</button>
-                    <button className="h-7 w-20 border-1px rounded-2xl text-primary">Login</button>
+                    <button className="h-7 w-20 border border-primary rounded-2xl text-primary">Login</button>
                 </div>
                 </div>
                
