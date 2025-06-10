@@ -19,7 +19,7 @@ export default function Sidebar(){
       </div>
 
       <nav className="flex flex-col items-start gap-y-10 sm:py-4 text-base">
-        <NavLink
+        {/* <NavLink
           to="/"
           className={({ isActive }) =>
             `flex items-center gap-x-6 w-full justify-start hover:bg-primary hover:text-white px-3 py-2 rounded-md
@@ -29,10 +29,10 @@ export default function Sidebar(){
         >
           <Home className="w-5 h-5" />
           <span className="">Overview</span>
-        </NavLink>
+        </NavLink> */}
 
         <div className="flex flex-col gap-y-3 ">
-          <span className="text-sm uppercase font-semibold">Setups</span>
+          <span className="text-sm uppercase font-semibold">0verview</span>
           {SETUPS.map(({ icon, title, path }, index) => (
             <NavLink
               key={index}
@@ -67,6 +67,7 @@ export default function Sidebar(){
             />
           </TooltipTrigger>
           <TooltipContent side="right">Logout</TooltipContent>
+          
         </Tooltip>
       </nav>
     </aside>
