@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Link,useLocation, useNavigate } from "react-router";
+import DashboardSearchBar from "./DashboardSearchBar";
 // import { Link, useLocation, useNavigate } from "react-router-dom";
 import _ from "lodash";
 import { Fragment } from "react/jsx-runtime";
@@ -56,6 +57,7 @@ const Navbar = () => {
             })}
         </BreadcrumbList>
       </Breadcrumb>
+      <DashboardSearchBar/>
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild className="ml-auto">

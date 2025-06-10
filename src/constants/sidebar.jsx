@@ -25,10 +25,10 @@ export default  [
             title: "Help",
             path: "/help"
         },
-        {
-            icon: <LogOut/>,
-            title:"Logout",
-            path: "/logout"
-        }
+        // {
+        //     icon: <LogOut/>,
+        //     title:"Logout",
+        //     path: "/logout"
+        // }
 
     ]
