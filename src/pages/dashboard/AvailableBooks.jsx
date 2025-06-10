@@ -19,7 +19,7 @@ export default function AvailableBooks({booksData}) {
             'bg-yellow-300': 'hover:from-yellow-400 hover:via-yellow-600 hover:to-yellow-800',
             'bg-blue-700': 'hover:from-blue-500 hover:via-blue-600 hover:to-blue-800',
             'bg-green-700': 'hover:from-green-500 hover:via-green-600 hover:to-green-800',
-            'bg-purple-700': 'hover:from-purple-500 hover:via-purple-600 hover:to-purple-800',
+            'bg-purple-300': 'hover:from-purple-400 hover:via-purple-300 hover:to-purple-800',
         };
         return gradientMap[bgColor] || 'hover:from-gray-500 hover:via-gray-600 hover:to-gray-800';
     };
