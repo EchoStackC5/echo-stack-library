@@ -16,7 +16,7 @@ import GenreFilter from "@/components/GenreFiter";
 export default function Dashboard() {
     return (
         <section className=" rounded-lg p-6 space-y-0.5 md:space-y-18">
-            {/* Your dashboard content here - the stats cards, charts, etc. */}
+            
             <div className="space-y-6">
                 <div className="font-font-satoshi">
                     <h1 className="text-2xl font-bold text-darkestHeading ">Welcome, Gloria! 😊</h1>
