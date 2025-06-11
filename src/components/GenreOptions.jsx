@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 export const genreOptions = [
-    { value: 'romance', label: 'Romance' },
+    { value: 'Romance', label: 'Romance' },
     { value: 'fiction', label: 'Fiction' },
     { value: 'self-help', label: 'Self-Help' },
     { value: 'satire', label: 'Satire' },
@@ -21,7 +21,8 @@ export default function GenreOptions(){
     return(
        <Select             
             options={genreOptions}
-            isMulti             
+            isMulti  
+            name='selectCategory'           
             placeholder="Select Genres"             
             className="basic-multi-select outline-none border text-secondary-text bg-backgrounds border-dark-border p-2 rounded-md"             
             classNamePrefix="select"         

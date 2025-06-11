@@ -61,7 +61,7 @@ export default function FileUpload() {
           className="hidden"
           accept="image/*"
           onChange={handleChange}
-          name="bookCover"
+          name="cover"
           required
         />
         

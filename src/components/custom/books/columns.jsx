@@ -1,4 +1,4 @@
-import { MoreHorizontal } from "lucide-react"
+import { MoreHorizontal,Trash2  } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -8,6 +8,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import EditBookForm from "@/components/EditBook"
+import { useState } from "react";
 // import { ColumnDef } from "@tanstack/react-table";
 
 export  const Books = [
@@ -160,28 +162,39 @@ export  const Books = [
 export const columns = [
   {
     accessorKey: "bookTitle",
-    header: "Book Tille",
+    header: "Book Title",
   },
   {
-    accessorKey: "author",
+    accessorKey: "authorNameTitle",
     header: "Author",
   },
   {
-    accessorKey: "genre",
+    accessorKey: "selectCategory",
     header: "Genre",
   },
+  // {
+  //   accessorKey: "isbn",
+  //   header: "ISBN",
+  // },
   {
-    accessorKey: "isbn",
-    header: "ISBN",
-  },
-  {
-    accessorKey: "publishedYear",
+    accessorKey: "publishYear",
     header: "Published year",
+    cell: (info) =>{
+      const date = new Date(info.getValue());
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+    }
   },
    {
     id: "actions",
     cell: ({ row }) => {
       const Books= row.original
+
+      const [open, setOpen] = useState(false)
  
       return (
         <DropdownMenu>
@@ -199,8 +212,11 @@ export const columns = [
               View Book details
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Edit Book</DropdownMenuItem>
-            <DropdownMenuItem>Delete Book</DropdownMenuItem>
+            {/* <DropdownMenuItem onClick={() => setOpen(true)}>
+        Edit Book
+      </DropdownMenuItem> */}
+      <EditBookForm open={open} onOpenChange={setOpen} />
+            <DropdownMenuItem><Trash2/>Delete Book</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
