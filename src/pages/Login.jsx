@@ -1,4 +1,4 @@
- feature/home
+
 import { useState } from 'react'
 import bookLogo from '../assets/images/bookLogo.svg'
 import eyeimg from '../assets/images/eyeimg.png'
@@ -6,8 +6,6 @@ import checkbox from '../assets/images/checkbox.png'
 import google from '../assets/images/google.png'
 import apple2 from '../assets/images/apple2.png'
 import frame from '../assets/images/frame.png'
-
-
 
 export default function Login(){
     const [showPassword, setShowPassword] = useState(false);
