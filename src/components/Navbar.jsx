@@ -1,4 +1,5 @@
 import bookLogo from '../assets/images/bookLogo.svg'
+import { Link } from 'react-router'
 
 export default function Navbar(){
     return(
@@ -8,11 +9,12 @@ export default function Navbar(){
                     <img src={bookLogo} alt="Logo" />
                     <h1 className='font-md text-xs md:text-xl'>EchoBooks</h1>
                 </div>
-                <div className='text-xs space-x-5'>
-                    <span>Home</span>
-                    <span>About Us</span>
-                    <span>Features</span>
-                    <span>Contact</span>
+                <div className='text-sm space-x-5'>
+                        <span><a href="">Home</a></span>
+                        <span><a href="">About Us</a></span>
+                        <span><a href="">Features</a></span>
+                        <span><a href="">Contact</a></span>
+                    
                 </div>
                     
                 <div className=" flex space-x-5 md:text-xs text-xs">
@@ -23,4 +25,4 @@ export default function Navbar(){
                
             </nav>
     )
-}
+} 
