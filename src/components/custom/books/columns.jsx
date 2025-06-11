@@ -8,6 +8,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import EditBookForm from "@/components/EditBook"
 // import { ColumnDef } from "@tanstack/react-table";
 
 export  const Books = [
@@ -199,7 +200,7 @@ export const columns = [
               View Book details
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Edit Book</DropdownMenuItem>
+            <DropdownMenuItem><EditBookForm/></DropdownMenuItem>
             <DropdownMenuItem>Delete Book</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

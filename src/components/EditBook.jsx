@@ -1,4 +1,4 @@
-import { X, Undo2, Plus } from 'lucide-react';
+import { X, Undo2, Plus,SquarePen } from 'lucide-react';
 import GenreOptions from './GenreOptions';
 import { genreOptions } from './GenreOptions';
 import Select from 'react-select';
@@ -12,7 +12,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-export default function AddBookForm() {
+export default function EditBookForm() {
     const postBook = (event) => {
         //prevents default form submission
         event.preventDefault();
@@ -39,17 +39,17 @@ export default function AddBookForm() {
     return (
         <Dialog className="">
             <DialogTrigger asChild>
-                <button className='border border-primary py-2 px-3 flex justify-center items-center rounded-full text-primary text-sm hover:bg-backgrounds cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95'>
-                    <Plus className="mr-2" />
-                    Add a new Book
+                <button className='flex items-center gap-2 '>
+                    <SquarePen className="mr-2" />
+                    Edit Book
                 </button>
             </DialogTrigger>
             <DialogContent className=" max-h-[90vh] overflow-y-auto top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] fixed bg-white p-6 rounded-md shadow-md w-full max-w-2xl">
                 <form onSubmit={postBook} >
                     <div className='flex justify-between items-center'>
                         <div className='flex flex-col gap-2'>
-                            <p className="text-2xl text-primary font-medium">Add a book</p>
-                            <p className="text-sm text-secondary-text font-normal">Please Provide the fields below to add a book</p>
+                            <p className="text-2xl text-primary font-medium">Edit Book</p>
+                            {/* <p className="text-sm text-secondary-text font-normal">P</p> */}
                         </div>
 
                     </div>

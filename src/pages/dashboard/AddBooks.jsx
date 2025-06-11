@@ -1,6 +1,8 @@
 // AddBooks.js - Client Component (no async)
 "use client"
 import { Plus } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { apiClient } from '@/api/client';
 
 import { columns, Books } from "@/components/custom/books/columns"
 import { DataTable } from "@/components/custom/books/book-data-table"
@@ -11,6 +13,17 @@ import AddBookForm from '@/components/AddAndEditBookForm';
 
 
 export default function AddBooks() {
+  const [books ,setBooks] = useState([])
+      const getBooks = () => {
+        apiClient.get('/books')
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+      }
+       useEffect(getBooks, []); 
   // No async/await needed since you're using static data
   return (
     <div className='space-y-10'>
