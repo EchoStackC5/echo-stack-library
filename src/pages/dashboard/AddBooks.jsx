@@ -17,7 +17,8 @@ export default function AddBooks() {
       const getBooks = () => {
         apiClient.get('/books')
         .then((response) => {
-          console.log(response)
+          console.log(response.data)
+          setBooks(response.data)
         })
         .catch((error) => {
           console.log(error)
@@ -46,7 +47,7 @@ export default function AddBooks() {
 
 
         </div>
-        <DataTable columns={columns} data={Books} className="bg-white [&_thead]:bg-red-600 [&_th]:font-semibold [&_td]:py-3 border"
+        <DataTable columns={columns} data={books} className="bg-white [&_thead]:bg-red-600 [&_th]:font-semibold [&_td]:py-3 border"
         />
 
       </div>

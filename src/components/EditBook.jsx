@@ -40,7 +40,7 @@ export default function EditBookForm() {
         <Dialog className="">
             <DialogTrigger asChild>
                 <button className='flex items-center gap-2 '>
-                    <SquarePen className="mr-2" />
+                    <SquarePen className="mr-2 w-3" />
                     Edit Book
                 </button>
             </DialogTrigger>
