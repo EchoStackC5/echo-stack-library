@@ -2,6 +2,7 @@ import img from "../../assets/images/img1.png"
 import img1 from "../../assets/images/clock.png"
 import img2 from "../../assets/images/edit.png"
 import img3 from "../../assets/images/review.png"
+import { Link } from "react-router"
 import { useState, useEffect } from "react"
 export default function BookDetails() {
     const [isOpen, setIsOpen] = useState(false);
