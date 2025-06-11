@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 
+
 import Navbar from "@/components/Navbar"
 import boo02 from '../assets/images/boo02.svg'
 import book1 from '../assets/images/book1.svg'
@@ -81,10 +82,14 @@ export default function Home() {
                 <p className="text-sm text-secondary-text py-6 max-w-xl">Easy to organize, track and manage your entire libraray collection. From catalogue, new arrivals to tracking genre trends--all in one intuitive dashbord.</p>
             </div>
 
-            <div className="flex sm:flex-row justify-center items-center gap-4 pb-10">
-                <button className="h-12 w-40 rounded-3xl bg-primary text-xs text-white">Get Started</button>
-                <button className="h-12 w-40 rounded-3xl bg-gradient-to-r from-blue-100 border border-light-border text-primary shadow-md to-white text-xs ">Request a Live Demo</button>
-            </div>
+                <div className="flex sm:flex-row justify-center items-center gap-4 pb-10">
+                    <button className="h-12 w-40 rounded-3xl bg-primary text-xs text-white">
+                        Get Started
+                    </button>
+                    <button className="h-12 w-40 rounded-3xl bg-gradient-to-r from-blue-100 border border-light-border text-primary shadow-md to-white text-xs">
+                        Request a Live Demo
+                    </button>
+                </div>
 
             <div className="flex py-8 justify-center items-center flex-wrap">
                 <img src={bookimg1} alt="book2" className="h-50 w-40" />
@@ -98,7 +103,6 @@ export default function Home() {
             
         </section>
         </>
-        
     )
 }
 
