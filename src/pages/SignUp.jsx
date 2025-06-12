@@ -2,7 +2,7 @@ import bookLogo from "../assets/images/bookLogo.svg";
 import eye from "../assets/images/eye.png";
 import google from "../assets/images/google.png";
 import apple from "../assets/images/apple.png";
-import bookstack from "../assets/images/bookstack.png"
+import bookstacks from "../assets/images/bookstack.png"
 import { useState } from "react";
 
 export default function SignUp() {
@@ -123,7 +123,7 @@ export default function SignUp() {
     </form>
   </div>
   <div className="hidden sm:block">
-    <img src={bookstack} alt="" className="h-auto w-150 pl-10 pt-10" />
+    <img src={bookstacks} alt="" className="h-auto w-150 pl-10 pt-10" />
   </div>
  </div>
 </section>
