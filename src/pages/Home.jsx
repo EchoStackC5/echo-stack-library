@@ -9,8 +9,6 @@ import book05 from '../assets/images/book05.svg'
 import book7 from '../assets/images/book7.svg'
 import richdad from '../assets/images/richdad.svg'
 
-
-
 export default function Home() {
     const bookImages = [boo02, book1, book04, book03, book05, book7, richdad]
     const [bookimg1, setBookImg1] = useState(bookImages[0])
@@ -68,11 +66,13 @@ export default function Home() {
                 ind7 = 0;
             }
             
+
         }, 3000)
     }
 
     return (
         <>
+
         <Navbar/>
         <section className="px-4 sm:px-6 lg:px-16 ">
             <div className="flex flex-col items-center py-10 text-center">
@@ -81,10 +81,16 @@ export default function Home() {
                 <p className="text-sm text-secondary-text py-6 max-w-xl">Easy to organize, track and manage your entire libraray collection. From catalogue, new arrivals to tracking genre trends--all in one intuitive dashbord.</p>
             </div>
 
-            <div className="flex sm:flex-row justify-center items-center gap-4 pb-10">
-                <button className="h-12 w-40 rounded-3xl bg-primary text-xs text-white">Get Started</button>
-                <button className="h-12 w-40 rounded-3xl bg-gradient-to-r from-blue-100 border border-light-border text-primary shadow-md to-white text-xs ">Request a Live Demo</button>
-            </div>
+
+                <div className="flex sm:flex-row justify-center items-center gap-4 pb-10">
+                    <button className="h-12 w-40 rounded-3xl bg-primary text-xs text-white">
+                        Get Started
+                    </button>
+                    <button className="h-12 w-40 rounded-3xl bg-gradient-to-r from-blue-100 border border-light-border text-primary shadow-md to-white text-xs">
+                        Request a Live Demo
+                    </button>
+                </div>
+
 
             <div className="flex py-8 justify-center items-center flex-wrap">
                 <img src={bookimg1} alt="book2" className="h-50 w-40" />
@@ -97,8 +103,8 @@ export default function Home() {
             </div>
             
         </section>
+
         </>
-        
     )
 }
 

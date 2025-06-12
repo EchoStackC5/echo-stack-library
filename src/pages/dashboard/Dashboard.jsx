@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/spinner";
 import { Card } from "@/components/ui/card";
 import DashboardCards from "@/components/DashboardCards";
 import CardsComponents from "@/constants/CardsComponents";
@@ -11,23 +12,23 @@ import { ChevronRight } from "lucide-react";
 import { Link, NavLink } from "react-router";
 import BooksGenre from "./Genre";
 import GenreFilter from "@/components/GenreFiter";
+import { DotsSpinner } from "@/components/spinner";
 // import { chartConfig } from "./DashboardCharts";
 
 export default function Dashboard() {
     return (
-        <section className=" rounded-lg p-6 space-y-0.5 md:space-y-18">
-            {/* Your dashboard content here - the stats cards, charts, etc. */}
+        <section className="space-y-0.5 md:space-y-18">
+          
+            
             <div className="space-y-6">
                 <div className="font-font-satoshi">
-                    <h1 className="text-2xl font-bold text-darkestHeading ">Welcome, Gloria! 😊</h1>
-                    <p className="text-muted-foreground">Manage all books here!</p>
+                    <h1 className=" text-xl md:text-2xl font-bold text-darkestHeading ">Welcome, Gloria! 😊</h1>
+                    <p className="text-muted-foreground text-sm">Manage all books here!</p>
                 </div>
 
                 {/* Your dashboard stats grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {/* Add your stat cards here */}
-                </div>
-
+                
+  
 
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
@@ -38,17 +39,17 @@ export default function Dashboard() {
             <div>
                 <ChartAreaLinear />
             </div>
-            <Card className="shadow-none border border-light-border">
+            <Card className="shadow-none border border-light-border flex items-center justify-center">
                 <div className="flex items-center justify-between p-8 w-full ">
-                    <h1 className="text-2xl text-darkestHeading font-satoshi">Available Books</h1>
+                    <h1 className=" text-sm md:text-2xl text-darkestHeading font-satoshi">Available Books</h1>
                     <Link
                         to="/dashboard/add-books"
-                        className=" font-satoshi flex shrink-0 items-center justify-center  rounded-full bg-backgrounds w-[150px] text-lg px-2 py-2 border border-light-border font-semibold text-primary  md:text-base"
+                        className=" font-satoshi flex shrink-0 items-center justify-center  rounded-full bg-backgrounds w-[100px] md:w-[150px] text-xs px-2 py-2 border border-light-border font-semibold text-primary  md:text-base"
                     > View All
                         <ChevronRight />
                     </Link>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3  gap-4 p-8">
+                <div className="grid grid-cols-1 md:grid-cols-3  gap-4 p-2 md:p-8">
                     {AvailableBooksConstants.map((book, index) => (
                         <AvailableBooks key={index} booksData={book} />
                     ))}
@@ -57,7 +58,7 @@ export default function Dashboard() {
             </Card>
              <Card className="shadow-none border border-light-border">
                 <div className="flex items-center justify-between p-8 w-full ">
-                    <h1 className="text-2xl text-darkestHeading font-satoshi">Books Genre</h1>
+                    <h1 className="text-lg md:text-2xl text-darkestHeading font-satoshi">Books Genre</h1>
                     <GenreFilter  />
                     
                 </div>

@@ -1,33 +1,48 @@
+import { MoreHorizontal, Trash2 } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import BookDetails from "@/pages/dashboard/BookDetails";
+import Modal from "../modal"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
-
+import EditBookForm from "@/components/EditBook"
+import { useState } from "react";
+import { apiClient } from "@/api/client";
 // import { ColumnDef } from "@tanstack/react-table";
 
-export  const Books = [
-    {
-        id: '001',
-        bookTitle: 'The mystery library',
-        author: 'Eliza Daniels',
-        genre: 'Mystery',
-        isbn: '65regcd-gvsf',
-        publishedYear: '2023'
-    },
-    {
-        id: '002',
-        bookTitle: 'All men in lagos are mad',
-        author: 'Eliza Daniels',
-        genre: 'Romance',
-        isbn: '65regcd-gvsf',
-        publishedYear: '2023'
-    },
-    {
-        id: '003',
-        bookTitle: 'Come Here',
-        author: 'Eliza Daniels',
-        genre: 'Mystery',
-        isbn: '65regcd-gvsf',
-        publishedYear: '2023'
-    },
-    {
+export const Books = [
+  {
+    id: '001',
+    bookTitle: 'The mystery library',
+    author: 'Eliza Daniels',
+    genre: 'Mystery',
+    isbn: '65regcd-gvsf',
+    publishedYear: '2023'
+  },
+  {
+    id: '002',
+    bookTitle: 'All men in lagos are mad',
+    author: 'Eliza Daniels',
+    genre: 'Romance',
+    isbn: '65regcd-gvsf',
+    publishedYear: '2023'
+  },
+  {
+    id: '003',
+    bookTitle: 'Come Here',
+    author: 'Eliza Daniels',
+    genre: 'Mystery',
+    isbn: '65regcd-gvsf',
+    publishedYear: '2023'
+  },
+  {
     id: '004',
     bookTitle: 'Whispers in the Dark',
     author: 'Marcus Chen',
@@ -152,29 +167,117 @@ export  const Books = [
 export const columns = [
   {
     accessorKey: "bookTitle",
-    header: "Book Tille",
+    header: "Book Title",
   },
   {
-    accessorKey: "author",
+    accessorKey: "authorNameTitle",
     header: "Author",
   },
   {
-    accessorKey: "genre",
+    accessorKey: "selectCategory",
     header: "Genre",
   },
+  // {
+  //   accessorKey: "isbn",
+  //   header: "ISBN",
+  // },
   {
-    accessorKey: "isbn",
-    header: "ISBN",
-  },
-  {
-    accessorKey: "publishedYear",
+    accessorKey: "publishYear",
     header: "Published year",
+    cell: (info) => {
+      const date = new Date(info.getValue());
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+    }
   },
-//   {
-//     accessorKey: "actions",
-//     header: "Actions",
-//   },
-  
+  {
+    id: "actions",
+    cell: ({ row }) => {
+      const book = row.original
+
+      const [open, setOpen] = useState(false)
+      const [deleteOpen, setDeleteOpen] = useState(false);
+      const [isDeleting, setIsDeleting] = useState(false);
+
+      const deleteBook = async () => {
+        setIsDeleting(true)
+        try {
+          await apiClient.delete(`/books/${book.id}`)
+
+          window.location.reload()
+        } catch (error) {
+          console.error('Delete failed:', error)
+          alert('Failed to delete book')
+        } finally {
+          setIsDeleting(false)
+          setDeleteOpen(false)
+        }
+      }
+
+
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="h-8 w-8 p-0">
+              <span className="sr-only">Open menu</span>
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuItem
+              onClick={() => navigator.clipboard.writeText(Books.id)}
+            >
+              View Book details
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            {/* <DropdownMenuItem onClick={() => setOpen(true)}>
+        Edit Book
+      </DropdownMenuItem> */}
+            <EditBookForm id={book.id} open={open} onOpenChange={setOpen} />
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Modal
+                  trigger={
+                    <Button
+                      variant="ghost"
+                      className="flex items-center justify-center font-normal rounded-lg p-0 transition-colors hover:text-foreground/60 hover:bg-transparent "
+                      onClick={() => setDeleteOpen(true)}
+                    >
+                      <Trash2 />
+                      Delete Book
+                    </Button>
+                  }
+                  headerText="Are you sure you want to delete this book?"
+                  submitButtonText="Confirm"
+                  onClick={deleteBook}
+                  isLoading={isDeleting}
+                />
+
+              </TooltipTrigger>
+              <TooltipContent side="right">Delete</TooltipContent>
+
+            </Tooltip>
+
+            {/* <DropdownMenuItem><Trash2/><button onClick={deleteBook}>Delete book</button></DropdownMenuItem> */}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )
+    },
+  },
+  //   {
+  //     accessorKey: "actions",
+  //     header: "Actions",
+  //   },
+
 
   // ... more columns
 ]
+
+//view book function
+// import { useSearchParams } from "react-router";

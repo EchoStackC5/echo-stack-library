@@ -3,6 +3,7 @@ import { Menu } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router'
 
+
 export default function Navbar() {
     const [menu, setMenu] = useState(false)
     return (
@@ -53,4 +54,5 @@ export default function Navbar() {
 
         </nav>
     );
+
 } 
