@@ -11,7 +11,7 @@ export default function RootLayout(){
         <TooltipProvider>
             <Sidebar/>
         </TooltipProvider>
-        <div className="flex flex-col pl-0 md:pl-60 w-full">
+        <div className="flex flex-col pl-1 md:pl-60 w-full">
             <Navbar/>
             <div className="bg-backgrounds min-h-screen p-2 md:p-8">
                 <Outlet/>
