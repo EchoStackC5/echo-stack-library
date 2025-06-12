@@ -47,6 +47,7 @@ export default function Navbar() {
                     <Link to="dashboard">Dashboard</Link>
                     <Link to="Categories">Categories</Link>
                     <Link to="All books">All books</Link>
+                    <Link to="All songs">All books</Link>
                 </div>
             </div>
 
