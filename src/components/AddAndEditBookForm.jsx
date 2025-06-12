@@ -4,6 +4,7 @@ import { genreOptions } from './GenreOptions';
 import Select from 'react-select';
 import FileUpload from './FileUpload';
 import { apiClient } from '@/api/client';
+import SubmitButton from './SubmitButton';
 import {
     Dialog,
     DialogContent,
@@ -31,6 +32,7 @@ export default function AddBookForm() {
             })
             .catch(error => {
                 console.error('There was an error adding the book!', error);
+                setErrorMessage(error.response?.data?.message || error.message || 'An error occurred');
             });
 
 
@@ -144,6 +146,7 @@ export default function AddBookForm() {
                         <button className='w-full bg-primary border border-primary text-white justify-center flex items-center gap-2 rounded-full font-normal text-lg py-2   cursor-pointer transition-transform duration-300 ease-in-out hover:scale-90 active:scale-95 ' type='submit'><Plus />Add Book</button>
                     </div>
                 </form>
+                
             </DialogContent>
 
         </Dialog>

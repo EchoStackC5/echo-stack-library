@@ -59,7 +59,10 @@ export function ChartAreaLinear() {
           </div>
         </div>
       </CardHeader>
-      <CardContent className="h-[250px] w-full">
+      <CardContent className="h-[100px] md:h-[250px] w-full ">
+        <div>
+          
+        </div>
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
             <defs>

@@ -1,5 +1,8 @@
-import { MoreHorizontal,Trash2  } from "lucide-react"
+import { MoreHorizontal, Trash2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import BookDetails from "@/pages/dashboard/BookDetails";
+import Modal from "../modal"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,36 +11,38 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+
 import EditBookForm from "@/components/EditBook"
 import { useState } from "react";
+import { apiClient } from "@/api/client";
 // import { ColumnDef } from "@tanstack/react-table";
 
-export  const Books = [
-    {
-        id: '001',
-        bookTitle: 'The mystery library',
-        author: 'Eliza Daniels',
-        genre: 'Mystery',
-        isbn: '65regcd-gvsf',
-        publishedYear: '2023'
-    },
-    {
-        id: '002',
-        bookTitle: 'All men in lagos are mad',
-        author: 'Eliza Daniels',
-        genre: 'Romance',
-        isbn: '65regcd-gvsf',
-        publishedYear: '2023'
-    },
-    {
-        id: '003',
-        bookTitle: 'Come Here',
-        author: 'Eliza Daniels',
-        genre: 'Mystery',
-        isbn: '65regcd-gvsf',
-        publishedYear: '2023'
-    },
-    {
+export const Books = [
+  {
+    id: '001',
+    bookTitle: 'The mystery library',
+    author: 'Eliza Daniels',
+    genre: 'Mystery',
+    isbn: '65regcd-gvsf',
+    publishedYear: '2023'
+  },
+  {
+    id: '002',
+    bookTitle: 'All men in lagos are mad',
+    author: 'Eliza Daniels',
+    genre: 'Romance',
+    isbn: '65regcd-gvsf',
+    publishedYear: '2023'
+  },
+  {
+    id: '003',
+    bookTitle: 'Come Here',
+    author: 'Eliza Daniels',
+    genre: 'Mystery',
+    isbn: '65regcd-gvsf',
+    publishedYear: '2023'
+  },
+  {
     id: '004',
     bookTitle: 'Whispers in the Dark',
     author: 'Marcus Chen',
@@ -179,7 +184,7 @@ export const columns = [
   {
     accessorKey: "publishYear",
     header: "Published year",
-    cell: (info) =>{
+    cell: (info) => {
       const date = new Date(info.getValue());
       return date.toLocaleDateString('en-US', {
         year: 'numeric',
@@ -189,13 +194,31 @@ export const columns = [
 
     }
   },
-   {
+  {
     id: "actions",
     cell: ({ row }) => {
-      const Books= row.original
+      const book = row.original
 
       const [open, setOpen] = useState(false)
- 
+      const [deleteOpen, setDeleteOpen] = useState(false);
+      const [isDeleting, setIsDeleting] = useState(false);
+
+      const deleteBook = async () => {
+        setIsDeleting(true)
+        try {
+          await apiClient.delete(`/books/${book.id}`)
+
+          window.location.reload()
+        } catch (error) {
+          console.error('Delete failed:', error)
+          alert('Failed to delete book')
+        } finally {
+          setIsDeleting(false)
+          setDeleteOpen(false)
+        }
+      }
+
+
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -215,18 +238,46 @@ export const columns = [
             {/* <DropdownMenuItem onClick={() => setOpen(true)}>
         Edit Book
       </DropdownMenuItem> */}
-      <EditBookForm open={open} onOpenChange={setOpen} />
-            <DropdownMenuItem><Trash2/>Delete Book</DropdownMenuItem>
+            <EditBookForm id={book.id} open={open} onOpenChange={setOpen} />
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Modal
+                  trigger={
+                    <Button
+                      variant="ghost"
+                      className="flex items-center justify-center font-normal rounded-lg p-0 transition-colors hover:text-foreground/60 hover:bg-transparent "
+                      onClick={() => setDeleteOpen(true)}
+                    >
+                      <Trash2 />
+                      Delete Book
+                    </Button>
+                  }
+                  headerText="Are you sure you want to delete this book?"
+                  submitButtonText="Confirm"
+                  onClick={deleteBook}
+                  isLoading={isDeleting}
+                />
+
+              </TooltipTrigger>
+              <TooltipContent side="right">Delete</TooltipContent>
+
+            </Tooltip>
+
+            {/* <DropdownMenuItem><Trash2/><button onClick={deleteBook}>Delete book</button></DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
       )
     },
   },
-//   {
-//     accessorKey: "actions",
-//     header: "Actions",
-//   },
-  
+  //   {
+  //     accessorKey: "actions",
+  //     header: "Actions",
+  //   },
+
 
   // ... more columns
 ]
+
+//view book function
+// import { useSearchParams } from "react-router";

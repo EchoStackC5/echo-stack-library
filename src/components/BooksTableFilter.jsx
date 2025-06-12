@@ -84,13 +84,13 @@ export default function BooksTableFilter() {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="font-satoshi flex shrink-0 items-center justify-center rounded-full w-[180px] text-lg p-6 border border-light-border font-semibold text-primary md:text-base"
+          className="font-satoshi flex shrink-0 items-center justify-center rounded-full w-full md:w-[180px] text-lg p-6 border border-light-border font-semibold text-primary md:text-base"
         >
           <span className="truncate">{getSelectedLabel()}</span>
           <ListFilter className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[220px] p-0">
+      <PopoverContent className="w-full md:w-[220px] p-0">
         <Command>
           <CommandInput placeholder="Search filters..." />
           <CommandList>
