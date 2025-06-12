@@ -8,6 +8,7 @@ import BookDetails from "./pages/dashboard/BookDetails";
 import RootLayout from "./layouts/rootLayout";
 import AddBooks from "./pages/dashboard/AddBooks";
 import GenresPage from "./pages/dashboard/GenresPage";
+import NotFound from "./pages/NotFound";
 
 const echoBooksRoutes = createBrowserRouter ([
   {
@@ -26,6 +27,10 @@ const echoBooksRoutes = createBrowserRouter ([
   {
     path: "/book-details",
     element: <BookDetails/>
+  },
+  {
+    path: "/not-found",
+    element: <NotFound/>
   },
   {
     path: "/dashboard",

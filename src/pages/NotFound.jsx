@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
-import { Link } from "react-router";
-import notfound from '../assets/images/notfound.jpg'
+import notfound from '../assets/images/notfound.png'
 import { Link } from "react-router";
 
 export default function NotFound() {
