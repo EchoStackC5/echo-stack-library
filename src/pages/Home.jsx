@@ -74,10 +74,10 @@ export default function Home() {
     return (
         <>
         <Navbar/>
-        <section className="px-4 sm:px-6 lg:px-16">
+        <section className="px-4 sm:px-6 lg:px-16 ">
             <div className="flex flex-col items-center py-10 text-center">
-                <h1 className=" text-5xl sm:text-4xl md:text-5xl font-satoshi py-3">Smart Book Management</h1>
-                <h1 className="font-satoshi md:text-5xl text-5xl">Made Simple</h1>
+                <h1 className=" text-5xl sm:text-4xl font-bold md:text-5xl font-satoshi py-3">Smart Book Management</h1>
+                <h1 className="font-satoshi font-bold md:text-5xl text-5xl">Made Simple</h1>
                 <p className="text-sm text-secondary-text py-6 max-w-xl">Easy to organize, track and manage your entire libraray collection. From catalogue, new arrivals to tracking genre trends--all in one intuitive dashbord.</p>
             </div>
 
