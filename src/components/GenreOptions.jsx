@@ -2,18 +2,12 @@ import React from 'react';
 import Select from 'react-select';
 export const genreOptions = [
     { value: 'Romance', label: 'Romance' },
-    { value: 'fiction', label: 'Fiction' },
-    { value: 'self-help', label: 'Self-Help' },
-    { value: 'satire', label: 'Satire' },
-    { value: 'drama', label: 'Drama' },
-    { value: 'mystery', label: 'Mystery' },
-    { value: 'biography', label: 'Biography' },
-    { value: 'fantasy', label: 'Fantasy' },
-    { value: 'science-fiction', label: 'Science Fiction' },
-    { value: 'horror', label: 'Horror' },
-    { value: 'thriller', label: 'Thriller' },
-    { value: 'business', label: 'Business' },
-    { value: 'technology', label: 'Technology' },
+    { value: 'Finance', label: 'Finance' },
+    { value: 'Education', label: 'Education' },
+    { value: 'Drama', label: 'Drama' },
+    { value: 'Technology', label: 'Technology' },
+    { value: 'Fantasy', label: 'Fantasy' },
+   
 ];
 
 export default function GenreOptions(){

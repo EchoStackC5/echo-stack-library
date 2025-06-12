@@ -202,6 +202,7 @@ export const columns = [
       const [open, setOpen] = useState(false)
       const [deleteOpen, setDeleteOpen] = useState(false);
       const [isDeleting, setIsDeleting] = useState(false);
+      const [viewBookOpen, setViewBookOpen] = useState(false);
 
       const deleteBook = async () => {
         setIsDeleting(true)
@@ -220,6 +221,7 @@ export const columns = [
 
 
       return (
+        <>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0">
@@ -229,11 +231,11 @@ export const columns = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(Books.id)}
-            >
-              View Book details
-            </DropdownMenuItem>
+             <DropdownMenuItem
+                onClick={() => setViewBookOpen(true)}
+              >
+                View Book details
+              </DropdownMenuItem>
             <DropdownMenuSeparator />
             {/* <DropdownMenuItem onClick={() => setOpen(true)}>
         Edit Book
@@ -267,6 +269,12 @@ export const columns = [
             {/* <DropdownMenuItem><Trash2/><button onClick={deleteBook}>Delete book</button></DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
+        <BookDetails 
+          isOpen={viewBookOpen} 
+          closeModal={() => setViewBookOpen(false)}
+          id={book.id}  // Pass only the ID
+        />
+          </>
       )
     },
   },

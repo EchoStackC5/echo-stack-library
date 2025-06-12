@@ -61,7 +61,7 @@ export default function EditBookForm({ id }) {
                 </button>
             </DialogTrigger>
             <DialogContent className=" max-h-[90vh] overflow-y-auto top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] fixed bg-white p-6 rounded-md shadow-md w-full max-w-2xl">
-                <form onSubmit={patchBook} >
+                <form onSubmit={patchBook} className='flex flex-col gap-6' >
                     <div className='flex justify-between items-center'>
                         <div className='flex flex-col gap-2'>
                             <p className="text-2xl text-primary font-medium">Edit Book</p>
@@ -71,7 +71,7 @@ export default function EditBookForm({ id }) {
                     </div>
                     <div className='flex justify-between'>
                         <div className=' flex flex-col gap-2'>
-                            <label className='text-lg font-normal text-secondary-text'>Book Title <span className='text-red-500'>*</span></label>
+                            <label className='text-sm   font-normal text-secondary-text'>Book Title <span className='text-red-500'>*</span></label>
                             <input
                                 type='text'
                                 name='bookTitle'
@@ -82,7 +82,7 @@ export default function EditBookForm({ id }) {
                             />
                         </div>
                         <div className=' flex flex-col gap-2'>
-                            <label className='text-lg font-normal text-secondary-text'>Author Name<span className='text-red-500'>*</span></label>
+                            <label className='text-sm  font-normal text-secondary-text'>Author Name<span className='text-red-500'>*</span></label>
                             <input
                                 type='text'
                                 name='authorNameTitle'
@@ -94,7 +94,7 @@ export default function EditBookForm({ id }) {
                         </div>
                     </div>
                     <div className=' flex flex-col gap-2'>
-                        <label className='text-lg font-normal text-secondary-text'>Description</label>
+                        <label className='text-sm  font-normal text-secondary-text'>Description</label>
                         <textarea
                             type='text'
                             name='description'
@@ -105,7 +105,7 @@ export default function EditBookForm({ id }) {
                         />
                     </div>
                     <div className=' flex flex-col gap-2'>
-                        <label className='text-lg font-normal text-secondary-text'>Select Genre<span className='text-red-500'>*</span></label>
+                        <label className='text-sm  font-normal text-secondary-text'>Select Genre<span className='text-red-500'>*</span></label>
 
                         {/* <Select options={options}
                     name='genre'
@@ -126,7 +126,7 @@ export default function EditBookForm({ id }) {
                     </div>
                     <div className='flex justify-between'>
                         <div className=' flex flex-col gap-2'>
-                            <label className='text-lg font-normal text-secondary-text'>Pulished Year <span className='text-red-500'>*</span></label>
+                            <label className='text-sm  font-normal text-secondary-text'>Pulished Year <span className='text-red-500'>*</span></label>
                             <input
                                 type='date'
                                 name='publishYear'
@@ -149,7 +149,7 @@ export default function EditBookForm({ id }) {
                     </div>
 
                     <div className=' flex flex-col gap-2'>
-                        <label className='text-lg font-normal text-secondary-text'>Book Cover <span className='text-red-500'>*</span></label>
+                        <label className='text-sm  font-normal text-secondary-text'>Book Cover <span className='text-red-500'>*</span></label>
                         <input
                             type='text'
                             name='cover'
