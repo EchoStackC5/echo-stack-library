@@ -3,6 +3,7 @@
 import { Plus } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { apiClient } from '@/api/client';
+import { useNavigate } from 'react-router';
 
 import { columns, Books } from "@/components/custom/books/columns"
 import { DataTable } from "@/components/custom/books/book-data-table"
@@ -19,6 +20,7 @@ export default function AddBooks() {
   const [filteredBooks, setFilteredBooks] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  // const navigate = useNavigate();
 
 //   const handleSearch = (query) => {
 //     const lowerQuery = query.toLowerCase();

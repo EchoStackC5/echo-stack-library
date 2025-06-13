@@ -30,24 +30,19 @@ export default function EditBookForm({ id }) {
     }
     useEffect(getBook, []);
 
-    const patchBook = (event) => {
-        //prevents default form submission
-        event.preventDefault();
-        const data = new FormData(event.target);
+    const patchBook = async (data) => {
 
-        apiClient.patch(`/books/${id}`, data, {
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-            .then(response => {
-                console.log(response.data);
-                event.target.reset();
-            })
-            .catch(error => {
-                console.error('There was an error adding the book!', error);
-                setErrorMessage(error.response?.data?.message || error.message || 'An error occurred');
+        try {
+            const response = await apiClient.patch(`/books/${id}`, data, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
             });
+            console.log(response.data);
+        } catch (error) {
+            console.error('There was an error adding the book!', error);
+            setErrorMessage(error.response?.data?.message || error.message || 'An error occurred');
+        }
 
 
 
@@ -61,7 +56,7 @@ export default function EditBookForm({ id }) {
                 </button>
             </DialogTrigger>
             <DialogContent className=" max-h-[90vh] overflow-y-auto top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] fixed bg-white p-6 rounded-md shadow-md w-full max-w-2xl">
-                <form onSubmit={patchBook} className='flex flex-col gap-6' >
+                <form action={patchBook} className='flex flex-col gap-6' >
                     <div className='flex justify-between items-center'>
                         <div className='flex flex-col gap-2'>
                             <p className="text-2xl text-primary font-medium">Edit Book</p>
@@ -161,10 +156,11 @@ export default function EditBookForm({ id }) {
                     </div>
 
                     {/* <FileUpload /> */}
-                    <div className='flex  flex-col md:flex-row gap-2'>
-                        <button className='w-full bg-backgrounds border border-primary text-primary justify-center flex items-center gap-2 rounded-full font-normal text-lg py-2   cursor-pointer transition-transform duration-300 ease-in-out hover:scale-90 active:scale-95 '><Undo2 />Cancel</button>
-                        <button className='w-full bg-primary border border-primary text-white justify-center flex items-center gap-2 rounded-full font-normal text-lg py-2   cursor-pointer transition-transform duration-300 ease-in-out hover:scale-90 active:scale-95 ' type='submit'>< Save className='w-4 h-4' />Save Changes</button>
-                    </div>
+                    
+                        {/* <button className='w-full bg-backgrounds border border-primary text-primary justify-center flex items-center gap-2 rounded-full font-normal text-lg py-2   cursor-pointer transition-transform duration-300 ease-in-out hover:scale-90 active:scale-95 '><Undo2 />Cancel</button> */}
+                        {/* <button className='w-full bg-primary border border-primary text-white justify-center flex items-center gap-2 rounded-full font-normal text-lg py-2   cursor-pointer transition-transform duration-300 ease-in-out hover:scale-90 active:scale-95 ' type='submit'>< Save className='w-4 h-4' />Save Changes</button> */}
+                        <SubmitButton title={"Save Changes"} className="w-full bg-primary border border-primary text-white justify-center flex items-center gap-2 rounded-full font-normal text-lg py-2   cursor-pointer transition-transform duration-300 ease-in-out hover:scale-90 active:scale-95 " />
+                   
                 </form>
             </DialogContent>
 

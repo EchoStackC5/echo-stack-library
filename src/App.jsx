@@ -29,7 +29,7 @@ const echoBooksRoutes = createBrowserRouter ([
     element: <BookDetails/>
   },
   {
-    path: "/not-found",
+    path: "*",
     element: <NotFound/>
   },
   {

@@ -28,29 +28,29 @@ export default function BooksGenre({booksData}) {
         };
         return gradientMap[bgColor] || 'hover:from-gray-500 hover:via-gray-600 hover:to-gray-800';
     };
+    
     return(
-        <section>
+        <section className="w-full max-w-[160px] xs:max-w-[180px] sm:max-w-[200px] mx-auto">
             
-            
-           <div className={`flex justify-center items-center ${booksData.bgColor} hover:bg-gradient-to-br ${getGradientClasses(booksData.bgColor)} rounded-t-md w-[200px] py-6 px-6 cursor-pointer transition-all duration-300 ease-in-out`}>
+           <div className={`flex justify-center items-center ${booksData.bgColor} hover:bg-gradient-to-br ${getGradientClasses(booksData.bgColor)} rounded-t-md w-full py-4 px-3 xs:py-5 xs:px-4 sm:py-6 sm:px-6 cursor-pointer transition-all duration-300 ease-in-out`}>
                 <img 
                     src={booksData.imageUrl} 
                     alt={booksData.title}
-                    className="shadow-2xl drop-shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95 " 
+                    className="shadow-2xl drop-shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95 max-w-full h-auto object-contain" 
                 />     
             </div>
-            <div className="flex flex-col bg-backgrounds rounded-b-md w-[200px] py-4 px-4 border border-gray-200">
-                <p className="font-aceme text-gray-800 text-lg font-medium line-clamp-2">{booksData.title}</p>
-                <div className="flex flex-wrap gap-2 mt-2">
-        {booksData.genre.map((singleGenre, index) => (
-            <p 
-                key={index}
-                className="text-gray-600 text-xs bg-white text-center px-3 py-1 rounded-full border border-dark-border cursor-pointer whitespace-nowrap"
-            >
-                {singleGenre}
-            </p>
-        ))}
-    </div>
+            <div className="flex flex-col bg-backgrounds rounded-b-md w-full py-3 px-2 xs:py-3 xs:px-3 sm:py-4 sm:px-4 border border-gray-200">
+                <p className="font-aceme text-gray-800 text-sm xs:text-base sm:text-lg font-medium line-clamp-2 leading-tight">{booksData.title}</p>
+                <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2 mt-1.5 xs:mt-2">
+                    {booksData.genre.map((singleGenre, index) => (
+                        <p 
+                            key={index}
+                            className="text-gray-600 text-xs xs:text-xs sm:text-xs bg-white text-center px-2 py-0.5 xs:px-2.5 xs:py-1 sm:px-3 sm:py-1 rounded-full border border-dark-border cursor-pointer whitespace-nowrap"
+                        >
+                            {singleGenre}
+                        </p>
+                    ))}
+                </div>
             </div>
             
         </section>

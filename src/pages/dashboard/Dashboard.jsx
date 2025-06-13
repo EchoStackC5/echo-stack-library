@@ -17,21 +17,20 @@ import { DotsSpinner } from "@/components/spinner";
 
 export default function Dashboard() {
     return (
-        <section className="space-y-0.5 md:space-y-18">
+        <section className="space-y-8 md:space-y-18">
           
             
             <div className="space-y-6">
-                <div className="font-font-satoshi">
+                <div className="font-font-satoshi flex flex-col mt-6 items-center justify-between">
                     <h1 className=" text-xl md:text-2xl font-bold text-darkestHeading ">Welcome, Gloria! 😊</h1>
                     <p className="text-muted-foreground text-sm">Manage all books here!</p>
                 </div>
 
-                {/* Your dashboard stats grid */}
                 
   
 
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center ">
                 {CardsComponents.map((card, index) => (
                     <DashboardCards key={index} cardData={card} />
                 ))}
@@ -39,7 +38,7 @@ export default function Dashboard() {
             <div>
                 <ChartAreaLinear />
             </div>
-            <Card className="shadow-none border border-light-border flex ">
+            <Card className="shadow-none border border-light-border md:justify-between justify-center  flex ">
                 <div className="flex items-center justify-between p-8 w-full ">
                     <h1 className=" text-sm md:text-2xl text-darkestHeading font-satoshi">Available Books</h1>
                     <Link
@@ -49,7 +48,7 @@ export default function Dashboard() {
                         <ChevronRight />
                     </Link>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3  gap-4 p-2 md:p-8">
+                <div className="grid grid-cols-2 md:grid-cols-3  gap-4 p-2 md:p-8">
                     {AvailableBooksConstants.map((book, index) => (
                         <AvailableBooks key={index} booksData={book} />
                     ))}
@@ -62,7 +61,7 @@ export default function Dashboard() {
                     <GenreFilter  />
                     
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3  gap-4 p-8">
+                <div className="grid grid-cols-2 md:grid-cols-3  gap-4 p-8">
                     {AvailableBooksConstants.map((book, index) => (
                         <BooksGenre key={index} booksData={book} />
                     ))}
