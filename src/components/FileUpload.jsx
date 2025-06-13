@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Upload } from 'lucide-react';
+import { useNavigate } from 'react-router';
 
 export default function FileUpload() {
   const [dragActive, setDragActive] = useState(false);

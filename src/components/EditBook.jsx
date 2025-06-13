@@ -1,4 +1,4 @@
-import { X, Undo2, Save, Plus, SquarePen } from 'lucide-react';
+import { X, Undo2, Save, Plus, SquarePen, CheckCircle } from 'lucide-react';
 import SubmitButton from './SubmitButton';
 import GenreOptions from './GenreOptions';
 import { genreOptions } from './GenreOptions';
@@ -18,6 +18,9 @@ import {
 
 export default function EditBookForm({ id }) {
     const [book, setBook] = useState({});
+    const [isOpen, setIsOpen] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const getBook = () => {
         apiClient.get(`/books/${id}`)
@@ -39,14 +42,27 @@ export default function EditBookForm({ id }) {
                 }
             });
             console.log(response.data);
+            
+            // Show success message
+            setShowSuccess(true);
+            setErrorMessage('');
+            
+            // Close dialog and refresh page after 2 seconds
+            setTimeout(() => {
+                setIsOpen(false);
+                setShowSuccess(false);
+                window.location.reload();
+            }, 2000);
+            
         } catch (error) {
             console.error('There was an error adding the book!', error);
             setErrorMessage(error.response?.data?.message || error.message || 'An error occurred');
+            setShowSuccess(false);
         }
     }
 
     return (
-        <Dialog className="">
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
                 <button className='flex items-center gap-1 sm:gap-2 text-sm sm:text-base'>
                     <SquarePen className="w-3 h-3 sm:w-4 sm:h-4 sm:mr-2" />
@@ -55,6 +71,18 @@ export default function EditBookForm({ id }) {
                 </button>
             </DialogTrigger>
             <DialogContent className="max-h-[90vh] overflow-y-auto top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] fixed bg-white p-3 sm:p-4 md:p-6 rounded-md shadow-md w-[95vw] sm:w-[90vw] md:w-full max-w-2xl mx-auto">
+                {/* Success Message Overlay */}
+                {showSuccess && (
+                    <div className="absolute inset-0 bg-white bg-opacity-95 flex items-center justify-center z-50 rounded-md">
+                        <div className="text-center">
+                            <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                            <h3 className="text-xl font-semibold text-green-600 mb-2">Edit Successful!</h3>
+                            <p className="text-gray-600">The book has been updated successfully.</p>
+                            {/* <p className="text-sm text-gray-500 mt-2">Refreshing page...</p> */}
+                        </div>
+                    </div>
+                )}
+
                 <form action={patchBook} className='flex flex-col gap-3 sm:gap-4 md:gap-6'>
                     <div className='flex justify-between items-center'>
                         <div className='flex flex-col gap-1 sm:gap-2'>
@@ -62,7 +90,14 @@ export default function EditBookForm({ id }) {
                         </div>
                     </div>
 
-                    {/* Title and Author - Stack on mobile, side by side on larger screens */}
+                    {/* Error Message */}
+                    {errorMessage && (
+                        <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md">
+                            <p className="text-sm">{errorMessage}</p>
+                        </div>
+                    )}
+
+                    
                     <div className='flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-4'>
                         <div className='flex flex-col gap-1 sm:gap-2 flex-1 sm:mr-2'>
                             <label className='text-xs sm:text-sm font-normal text-secondary-text'>
@@ -165,6 +200,7 @@ export default function EditBookForm({ id }) {
                         <SubmitButton 
                             title={"Save Changes"} 
                             className="w-full bg-primary border border-primary text-white justify-center flex items-center gap-2 rounded-full font-normal text-sm sm:text-base md:text-lg py-2 sm:py-3 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-[0.98] active:scale-95" 
+                            disabled={showSuccess}
                         />
                     </div>
                 </form>
