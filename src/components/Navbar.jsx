@@ -44,10 +44,10 @@ export default function Navbar() {
 
             <div className=' w-[90%] md:hidden justify-end flex' style={{ display: menu ? 'flex' : 'none' }}>
                 <div className='text-sm space-x-5 flex flex-col space-y-2'>
-                    <Link to="/">Home</Link>
-                    <Link to="dashboard">Dashboard</Link>
-                    <Link to="Categories">Categories</Link>
-                    <Link to="All books">All books</Link>
+                    <Link to="/" className='hover:text-primary active:text-primary'>Home</Link>
+                    <Link to="#" className='hover:text-primary active:text-primary' >Home</Link>
+                    <Link to="#"  className='hover:text-primary active:text-primary' >About Us</Link>
+                    <Link to="#"  className='hover:text-primary active:text-primary' >Contact Us </Link>
                     
                 </div>
             </div>

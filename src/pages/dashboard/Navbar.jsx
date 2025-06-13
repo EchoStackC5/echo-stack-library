@@ -43,7 +43,7 @@ const Navbar = () => {
 
   return (
     <>
-    <header className="sticky md:w-full top-0 z-30 flex h-14 items-center gap-4 border-b-2 shadow-sm bg-background px-2 md:px-8 py-10">
+    <header className="sticky md:w-full top-0 z-30 flex h-14 items-center gap-4 border-b-2 shadow-sm bg-background px-2 md:px-8 py-10 overflow-x-hidden">
       <button
   size="icon"
   variant="outline"
