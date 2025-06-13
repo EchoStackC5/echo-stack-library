@@ -16,6 +16,20 @@ import { ThreeDots } from 'react-loader-spinner';
 export default function AddBooks() {
   const [books, setBooks] = useState([])
   const [isLoading, setIsLoading] = useState(true);
+  const [filteredBooks, setFilteredBooks] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+
+//   const handleSearch = (query) => {
+//     const lowerQuery = query.toLowerCase();
+//     const filtered = books.filter(book => 
+//         book.bookTitle.toLowerCase().includes(lowerQuery) || 
+//         book.authorNameTitle.toLowerCase().includes(lowerQuery)
+//     );
+//     setFilteredBooks(filtered);
+// };
+
+
   // const getBooks = () => {
   //   apiClient.get('/books')
   //   .then((response) => {
@@ -28,18 +42,83 @@ export default function AddBooks() {
   // }
   //  useEffect(getBooks, []); 
   // No async/await needed since you're using static data
+  // useEffect(() => {
+  //   setIsLoading(true); // Start loading
+  //   apiClient.get('/books')
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       setBooks(response.data);
+  //       setFilteredBooks(response.data); 
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     })
+  //     .finally(() => {
+  //       setIsLoading(false); // Stop loading
+  //     });
+  // }, []);
+
+//   const handleFilterChange = (filterValue) => {
+//   setSelectedFilter(filterValue);
+//   applyFilters(books, searchQuery, filterValue);
+// };
+
+ const handleSearch = (query) => {
+    setSearchQuery(query);
+    applyFilters(books, query, selectedFilter);
+  };
+
+  const handleFilterChange = (filterValue) => {
+    setSelectedFilter(filterValue);
+    applyFilters(books, searchQuery, filterValue);
+  };
+
+  const applyFilters = (booksData, searchQuery, filterValue) => {
+    let filtered = [...booksData];
+
+    // Apply search filter
+    if (searchQuery) {
+      const lowerQuery = searchQuery.toLowerCase();
+      filtered = filtered.filter(book =>
+        book.bookTitle.toLowerCase().includes(lowerQuery) ||
+        book.authorNameTitle.toLowerCase().includes(lowerQuery)
+      );
+    }
+
+    // Apply category/year filter
+    if (filterValue) {
+      // Check if it's a year filter (numeric)
+      if (!isNaN(filterValue)) {
+        filtered = filtered.filter(book => 
+          book.publishYear === filterValue || book.publishYear === parseInt(filterValue)
+        );
+      } else {
+        // It's a genre filter
+        filtered = filtered.filter(book => 
+          book.selectCategory && book.selectCategory.toLowerCase() === filterValue.toLowerCase()
+        );
+      }
+    }
+
+    setFilteredBooks(filtered);
+  };
+
+
+  
+
   useEffect(() => {
-    setIsLoading(true); // Start loading
+    setIsLoading(true);
     apiClient.get('/books')
       .then((response) => {
         console.log(response.data);
         setBooks(response.data);
+        setFilteredBooks(response.data); // Initialize filtered books with all books
       })
       .catch((error) => {
         console.log(error);
       })
       .finally(() => {
-        setIsLoading(false); // Stop loading
+        setIsLoading(false);
       });
   }, []);
 
@@ -52,14 +131,15 @@ export default function AddBooks() {
       <div className=" font-satoshi container mx-auto py-10 bg-white px-10 space-y-4 rounded-md border border-light-border">
         <div className='flex flex-col md:flex-row justify-between  py-4 space-y-10 md:space-y-2'>
           <div className='flex md:flex-row flex-col items-center gap-4'>
-            <p className='text-darkestHeading text-sm md:text-xl '>All Books <span className='text-secondary-text text-sm'>30</span></p>
-            <BooksSearchBar className="" />
+            <p className='text-darkestHeading text-sm md:text-xl '>All Books <span className='text-secondary-text text-sm'>{filteredBooks.length}</span></p>
+            <BooksSearchBar onSearch={handleSearch} />
+
           </div>
 
           <div className='flex flex-col md:flex-row  gap-2'>
 
             <AddBookForm className=" " />
-            <BooksTableFilter />
+            <BooksTableFilter onFilterChange={handleFilterChange} />
           </div>
 
 
@@ -69,7 +149,7 @@ export default function AddBooks() {
             <ThreeDots height="120" width="120" color="#084182" />
           </div>
         ) : (
-          <DataTable columns={columns} data={books} className="bg-white [&_thead]:bg-red-600 [&_th]:font-semibold [&_td]:py-3 border" />
+          <DataTable DataTable columns={columns} data={filteredBooks} className="bg-white [&_thead]:bg-red-600 [&_th]:font-semibold [&_td]:py-3 border" />
         )}
 
       </div>

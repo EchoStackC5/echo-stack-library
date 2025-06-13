@@ -66,7 +66,7 @@ export default function BookDetails({ isOpen, closeModal, id }) {
                             <div className="text-lg text-red-600">{error}</div>
                         </div>
                     ) : bookDetails ? (
-                        <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-start">
+                        <div className="flex flex-col md:flex-row  gap-6 md:gap-10 justify-center items-center">
                             <div
                                 style={{ backgroundColor: "var(--color-backgrounds)" }}
                                 className="h-auto w-90 rounded-md shadow-md hover:shadow-lg transition duration-300 p-2 pl-5 pt-0 pr-3 mt-5"
@@ -104,11 +104,13 @@ export default function BookDetails({ isOpen, closeModal, id }) {
                                     </span>
                                 </div>
 
-                                <p className="text-secondary-text text-sm mt-4 ">
-                                    {bookDetails.description || 
-                                     bookDetails.summary || 
-                                     "No description available for this book."}
-                                </p>
+                              
+  <p className="text-gray-700 text-sm mt-4 break-all w-[200px]">
+    {bookDetails.description || "No description available for this book."}
+  </p>
+
+
+                                
 
                                 <span className="font-satoshi font-medium text-[20px] leading-[20px] tracking-normal mt-5 text-gray-700">
                                     Genre

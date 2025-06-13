@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router"
 
 import Navbar from "@/components/Navbar"
 import boo02 from '../assets/images/boo02.svg'
@@ -83,10 +84,13 @@ export default function Home() {
 
 
                 <div className="flex sm:flex-row justify-center items-center gap-4 pb-10">
-                    <button className="h-12 w-40 rounded-3xl bg-primary text-xs text-white">
+                    <Link to="/dashboard" className="h-12 w-40 rounded-3xl bg-primary text-lg text-white flex justify-center items-center   cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95">
+                    Get Started
+                    </Link>
+                    {/* <button className="h-12 w-40 rounded-3xl bg-primary text-xs text-white">
                         Get Started
-                    </button>
-                    <button className="h-12 w-40 rounded-3xl bg-gradient-to-r from-blue-100 border border-light-border text-primary shadow-md to-white text-xs">
+                    </button> */}
+                    <button className="h-12 w-40 rounded-3xl text-sm  bg-gradient-to-r from-blue-100 border border-light-border text-primary shadow-md to-white ">
                         Request a Live Demo
                     </button>
                 </div>

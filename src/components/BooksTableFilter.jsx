@@ -33,18 +33,17 @@ const filterCategories = {
   genre: {
     label: "Genre",
     items: [
-      { value: "romance", label: "Romance" },
-      { value: "fiction", label: "Fiction" },
-      { value: "self-help", label: "Self-Help" },
-      { value: "satire", label: "Satire" },
-      { value: "drama", label: "Drama" },
-      { value: "mystery", label: "Mystery" },
-      { value: "biography", label: "Biography" },
+      { value: "Romance", label: "Romance" },
+      { value: "Finance", label: "Finance" },
+      { value: "Education", label: "Education" },
+      { value: "Drama", label: "Drama" },
+      { value: "Technology", label: "Technology" },
+      { value: "Fantasy", label: "Fantasy" },
     ]
   }
 }
 
-export default function BooksTableFilter() {
+export default function BooksTableFilter({ onFilterChange }) {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
   const [expandedCategories, setExpandedCategories] = React.useState(new Set())
@@ -73,66 +72,94 @@ export default function BooksTableFilter() {
   }
 
   const handleSelect = (currentValue) => {
-    setValue(currentValue === value ? "" : currentValue)
+    const newValue = currentValue === value ? "" : currentValue
+    setValue(newValue)
     setOpen(false)
+    
+    // Call the parent component's filter change handler
+    if (onFilterChange) {
+      onFilterChange(newValue)
+    }
+  }
+
+  // Add clear filter functionality
+  const clearFilter = () => {
+    setValue("")
+    if (onFilterChange) {
+      onFilterChange("")
+    }
   }
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          role="combobox"
-          aria-expanded={open}
-          className="font-satoshi flex shrink-0 items-center justify-center rounded-full w-full md:w-[180px] text-lg p-6 border border-light-border font-semibold text-primary md:text-base"
-        >
-          <span className="truncate">{getSelectedLabel()}</span>
-          <ListFilter className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-full md:w-[220px] p-0">
-        <Command>
-          <CommandInput placeholder="Search filters..." />
-          <CommandList>
-            <CommandEmpty>No filters found</CommandEmpty>
-            
-            {Object.entries(filterCategories).map(([categoryKey, category]) => (
-              <CommandGroup key={categoryKey}>
-                {/* Category Header */}
-                <CommandItem
-                  className="font-medium cursor-pointer hover:bg-accent"
-                  onSelect={() => toggleCategory(categoryKey)}
-                >
-                  {expandedCategories.has(categoryKey) ? (
-                    <ChevronDownIcon className="mr-2 h-4 w-4" />
-                  ) : (
-                    <ChevronRightIcon className="mr-2 h-4 w-4" />
-                  )}
-                  {category.label}
-                </CommandItem>
-                
-                {/* Category Items */}
-                {expandedCategories.has(categoryKey) && category.items.map((item) => (
+    <div className="flex items-center gap-2">
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            role="combobox"
+            aria-expanded={open}
+            className="font-satoshi flex shrink-0 items-center justify-center rounded-full w-full md:w-[180px] text-lg p-6 border border-light-border font-semibold text-primary md:text-base"
+          >
+            <span className="truncate">{getSelectedLabel()}</span>
+            <ListFilter className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-full md:w-[220px] p-0">
+          <Command>
+            <CommandInput placeholder="Search filters..." />
+            <CommandList>
+              <CommandEmpty>No filters found</CommandEmpty>
+              
+              {Object.entries(filterCategories).map(([categoryKey, category]) => (
+                <CommandGroup key={categoryKey}>
+                  {/* Category Header */}
                   <CommandItem
-                    key={item.value}
-                    value={item.value}
-                    className="pl-8"
-                    onSelect={handleSelect}
+                    className="font-medium cursor-pointer hover:bg-accent"
+                    onSelect={() => toggleCategory(categoryKey)}
                   >
-                    <CheckIcon
-                      className={cn(
-                        "mr-2 h-4 w-4",
-                        value === item.value ? "opacity-100" : "opacity-0"
-                      )}
-                    />
-                    {item.label}
+                    {expandedCategories.has(categoryKey) ? (
+                      <ChevronDownIcon className="mr-2 h-4 w-4" />
+                    ) : (
+                      <ChevronRightIcon className="mr-2 h-4 w-4" />
+                    )}
+                    {category.label}
                   </CommandItem>
-                ))}
-              </CommandGroup>
-            ))}
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
+                  
+                  {/* Category Items */}
+                  {expandedCategories.has(categoryKey) && category.items.map((item) => (
+                    <CommandItem
+                      key={item.value}
+                      value={item.value}
+                      className="pl-8"
+                      onSelect={handleSelect}
+                    >
+                      <CheckIcon
+                        className={cn(
+                          "mr-2 h-4 w-4",
+                          value === item.value ? "opacity-100" : "opacity-0"
+                        )}
+                      />
+                      {item.label}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              ))}
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
+      
+      {/* Clear filter button */}
+      {value && (
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={clearFilter}
+          className="text-xs px-2"
+        >
+          Clear
+        </Button>
+      )}
+    </div>
   )
 }
