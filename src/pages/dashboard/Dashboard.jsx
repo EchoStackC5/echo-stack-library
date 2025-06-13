@@ -21,7 +21,7 @@ export default function Dashboard() {
           
             
             <div className="space-y-6">
-                <div className="font-font-satoshi flex flex-col mt-6 items-center justify-between">
+                <div className="font-font-satoshi flex flex-col mt-6  justify-between">
                     <h1 className=" text-xl md:text-2xl font-bold text-darkestHeading ">Welcome, Gloria! 😊</h1>
                     <p className="text-muted-foreground text-sm">Manage all books here!</p>
                 </div>

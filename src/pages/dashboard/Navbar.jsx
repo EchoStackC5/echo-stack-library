@@ -86,7 +86,7 @@ const Navbar = () => {
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <span className="flex items-center gap-x-2 text-xs md:text-base font-semibold">
-              Super Admin <ChevronDown size={16} />
+              Gloria Dedo <ChevronDown size={16} />
             </span>
           </Button>
         </DropdownMenuTrigger>
