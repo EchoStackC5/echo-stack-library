@@ -8,7 +8,7 @@ const AvailableBooksConstants = [
         title: "The Subtle Art of Not Giving a Fuck",
         author: "Mark Manson",
         bgColor: "bg-orange-700",
-        genre: ["Self-Help", "Personal Development", "Psychology"]
+        genre: ["Self-Help",  "Psychology"]
     },
     {
         imageUrl: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTEWxSmnpElsT0BstvoMf_YaAkU3mwNKiWyCVfRQCquLp9EOBVj",
@@ -45,7 +45,7 @@ const AvailableBooksConstants = [
         title: "Ask More Questions",
         bgColor: "bg-gray-100",
         author: "Frank Sesno",
-        genre: ["Communication" , "Self-Help" , "Personal Development"]
+        genre: ["Communication" , "Self-Help" , ]
     }
 ]
 export default AvailableBooksConstants;
