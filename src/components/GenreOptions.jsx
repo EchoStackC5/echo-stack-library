@@ -7,6 +7,7 @@ export const genreOptions = [
     { value: 'Drama', label: 'Drama' },
     { value: 'Technology', label: 'Technology' },
     { value: 'Fantasy', label: 'Fantasy' },
+     { value: 'hero', label: 'hero' },
    
 ];
 

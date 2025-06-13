@@ -1,4 +1,4 @@
-/* styles.css */
+
 @keyframes scrollBooks {
   0% {
     transform: translateX(100%);
@@ -11,12 +11,12 @@
 .animate-scroll {
   display: flex;
   animation: scrollBooks 30s linear infinite;
-  /* Adjust the timing to make the animation slower or faster */
+  
 }
 
 .book-img {
-  width: 150px; /* Adjust size as necessary */
-  height: 200px; /* Adjust size as necessary */
+  width: 150px; 
+  height: 200px; 
   object-fit: contain;
   opacity: 0.9;
   transition: opacity 0.3s ease;
