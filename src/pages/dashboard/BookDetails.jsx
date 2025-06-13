@@ -10,13 +10,13 @@ export default function BookDetails({ isOpen, closeModal, id }) {
     const [bookDetails, setBookDetails] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    
+
     const getBookDetails = async () => {
         if (!id) return; // Don't make API call if no ID
-        
+
         setLoading(true);
         setError(null);
-        
+
         try {
             const response = await apiClient.get(`/books/${id}`);
             console.log(response.data);
@@ -59,8 +59,8 @@ export default function BookDetails({ isOpen, closeModal, id }) {
 
                     {loading ? (
                         <div className="flex justify-center items-center w-full h-64">
-                                    <ThreeDots height="120" width="120" color="#084182" />
-                                  </div>
+                            <ThreeDots height="120" width="120" color="#084182" />
+                        </div>
                     ) : error ? (
                         <div className="flex justify-center items-center w-full h-64">
                             <div className="text-lg text-red-600">{error}</div>
@@ -104,20 +104,20 @@ export default function BookDetails({ isOpen, closeModal, id }) {
                                     </span>
                                 </div>
 
-                              
-  <p className="text-gray-700 text-sm mt-4 break-all w-[200px]">
-    {bookDetails.description || "No description available for this book."}
-  </p>
+
+                                <p className="text-gray-700 text-sm mt-4 break-all w-[200px]">
+                                    {bookDetails.description || "No description available for this book."}
+                                </p>
 
 
-                                
+
 
                                 <span className="font-satoshi font-medium text-[20px] leading-[20px] tracking-normal mt-5 text-gray-700">
                                     Genre
                                 </span>
 
                                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-4">
-                                    {bookDetails.categories && Array.isArray(bookDetails.categories) ? 
+                                    {bookDetails.categories && Array.isArray(bookDetails.categories) ?
                                         bookDetails.categories.map((cat, index) => (
                                             <span
                                                 key={index}
@@ -126,7 +126,7 @@ export default function BookDetails({ isOpen, closeModal, id }) {
                                             >
                                                 {cat}
                                             </span>
-                                        )) : 
+                                        )) :
                                         <span
                                             className="flex items-center text-center gap-2 rounded-xl px-4 py-2 text-xs font-medium shadow-sm border border-[#E0E4EA] text-gray-700 pl-13"
                                             style={{ backgroundColor: "var(--color-backgrounds)" }}
