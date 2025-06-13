@@ -61,7 +61,7 @@ export default function AddBookForm() {
     const [toast, setToast] = useState({
         isVisible: false,
         message: '',
-        type: 'success' // 'success' or 'error'
+        type: 'success' // show 'success' or 'error'
     });
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 

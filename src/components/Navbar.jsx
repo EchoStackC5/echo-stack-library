@@ -30,9 +30,9 @@ export default function Navbar() {
                     </div>
                     <div className='text-sm space-x-5 hidden md:flex'>
                         <Link to="/">Home</Link>
-                        <Link to="dashboard">Dashboard</Link>
-                        <Link to="Categories">Categories</Link>
-                        <Link to="All books">All books</Link>
+                        <Link to="#">About Us </Link>
+                        <Link to="#">Features</Link>
+                        <Link to="#">Contact Us</Link>
                     </div>
 
                     <div className="space-x-5 md:text-xs text-xs hidden md:flex">
