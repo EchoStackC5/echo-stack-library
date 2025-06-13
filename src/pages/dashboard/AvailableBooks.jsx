@@ -30,14 +30,14 @@ export default function AvailableBooks({booksData}) {
         <section>
             
             
-           <div className={`flex justify-center items-center ${booksData.bgColor} hover:bg-gradient-to-br ${getGradientClasses(booksData.bgColor)} rounded-t-md w-[200px] py-6 px-6 cursor-pointer transition-all duration-300 ease-in-out`}>
+           <div className={`flex justify-center items-center ${booksData.bgColor} hover:bg-gradient-to-br ${getGradientClasses(booksData.bgColor)} rounded-t-md w-[150px] md:w-[200px] py-6 px-6 cursor-pointer transition-all duration-300 ease-in-out`}>
                 <img 
                     src={booksData.imageUrl} 
                     alt={booksData.title}
                     className="shadow-2xl drop-shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95 " 
                 />     
             </div>
-            <div className="flex flex-col bg-backgrounds rounded-b-md w-[200px] py-4 px-4 border border-gray-200">
+            <div className="flex flex-col bg-backgrounds rounded-b-md w-[150px] md:w-[200px] py-4 px-4 border border-gray-200">
                 <p className="font-aceme text-gray-800 text-lg font-medium line-clamp-2">{booksData.title}</p>
                 <p className="text-gray-600 text-sm mt-1">{booksData.author}</p>
             </div>
